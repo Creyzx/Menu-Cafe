@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Pengaturan Meta Dasar untuk Karakter dan Aksesibilitas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Digital Kafe</title>
+
+    <!-- Menghubungkan File CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Menghubungkan File Manifest untuk Dukungan Progressive Web App (PWA / Offline) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" href="#2c3e50">
+</head>
+<body>
+
+    <!-- Header / Bilah Navigasi Atas -->
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo">Kopi & Santai</h1>
+            <!-- Pencarian Cepat Menu -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cari menu favoritmu...">
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama Aplikasi -->
+    <main class="container main-content">
+        
+        <!-- Bagian Utama: Filter & Daftar Menu -->
+        <section class="menu-section">
+            
+            <!-- Tombol Filter Kategori -->
+            <div class="category-filter">
+                <button class="btn-filter active" data-category="semua">Semua</button>
+                <button class="btn-filter" data-category="makanan">Makanan</button>
+                <button class="btn-filter" data-category="minuman">Minuman</button>
+                <button class="btn-filter" data-category="camilan">Camilan</button>
+            </div>
+
+            <!-- Wadah Grid Tempat Kartu Menu Ditampilkan Melalui JavaScript -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- Data menu akan dimasukkan secara dinamis oleh app.js -->
+            </div>
+            
+        </section>
+
+        <!-- Bagian Samping: Panel Keranjang Belanja -->
+        <aside class="cart-section" id="cartSection">
+            <div class="cart-header">
+                <h2>Keranjang Pesanan</h2>
+                <span id="cartCountBadge" class="badge">0</span>
+            </div>
+
+            <!-- Daftar Item Pesanan yang Ditambahkan -->
+            <div class="cart-items" id="cartItems">
+                <!-- Item pesanan akan dirender secara dinamis oleh app.js -->
+                <p class="empty-cart-msg">Keranjang belanja masih kosong.</p>
+            </div>
+
+            <!-- Ringkasan Pembayaran dan Tombol Aksi -->
+            <div class="cart-footer">
+                <div class="total-price-box">
+                    <span>Total Tagihan:</span>
+                    <strong id="totalPrice">Rp 0</strong>
+                </div>
+                
+                <!-- Tombol Kirim Pesanan via WhatsApp -->
+                <button class="btn-checkout" id="btnCheckout">
+                    Pesan via WhatsApp
+                </button>
+                
+                <!-- Tombol Riset / Hapus Keranjang -->
+                <button class="btn-clear" id="btnClearCart">
+                    Kosongkan Keranjang
+                </button>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Footer Sederhana -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Kopi & Santai. Dapat diakses secara Online & Offline.</p>
+        </div>
+    </footer>
+
+    <!-- Menghubungkan File JavaScript Eksternal -->
+    <script src="app.js"></script>
+
+    <!-- Skrip Pendaftaran Service Worker untuk Mode Offline (PWA) -->
+    <script>
+        // Memeriksa apakah browser mendukung Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker berhasil didaftarkan:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('Pendaftaran Service Worker gagal:', error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>
