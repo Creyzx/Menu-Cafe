@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f7ff">
+    <meta name="description" content="Jelajahi menu, susun pesanan, dan kirim langsung ke kasir Cafe Sore.">
+    <title>Cafe Sore — Menu Interaktif</title>
+    <link rel="icon" href="./assets/icon-192.svg" type="image/svg+xml">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#menu">Lewati ke menu</a>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Cafe Sore, beranda">
+        <span class="brand-mark" aria-hidden="true">cs</span>
+        <span class="brand-copy">
+          <strong>cafe sore</strong>
+          <span>good food, good mood</span>
+        </span>
+      </a>
+      <div class="header-note"><span class="status-dot"></span> Dibuat dengan rasa ☀️</div>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR LITTLE HAPPY PLACE</p>
+          <h1 id="hero-title">Lagi pengin<br><span>yang enak?</span></h1>
+          <p class="hero-description">Temukan teman terbaik buat hari kamu. Pilih favoritmu, pesan gampang, lalu nikmati.</p>
+          <a class="hero-link" href="#menu">Lihat menu <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="hero-spark spark-one">✳</span>
+          <span class="hero-spark spark-two">✦</span>
+          <div class="hero-plate"><span class="hero-food">🥐</span></div>
+          <span class="hero-sticker">made<br>with ☻</span>
+        </div>
+        <span class="hero-index" aria-hidden="true">MENU NO. 01 / ALL DAY</span>
+      </section>
+
+      <div class="catalog-layout">
+        <section class="catalog" id="menu" aria-labelledby="menu-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">PICK YOUR MOOD</p>
+              <h2 id="menu-title">Menu favorit</h2>
+            </div>
+            <span class="menu-count" id="menuCount" aria-live="polite"></span>
+          </div>
+
+          <label class="search-box" for="menuSearch">
+            <span aria-hidden="true">⌕</span>
+            <input id="menuSearch" type="search" placeholder="Cari yang kamu suka..." autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+
+          <div class="category-list" role="group" aria-label="Filter kategori">
+            <button class="category-chip is-active" type="button" data-category="Semua" aria-pressed="true">Semua <span>✳</span></button>
+            <button class="category-chip" type="button" data-category="Makanan" aria-pressed="false">Makanan</button>
+            <button class="category-chip" type="button" data-category="Minuman" aria-pressed="false">Minuman</button>
+            <button class="category-chip" type="button" data-category="Camilan" aria-pressed="false">Camilan</button>
+          </div>
+
+          <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+          <p class="empty-state" id="emptyState" hidden>Yah, belum ada menu yang cocok. Coba kata kunci lain, ya!</p>
+        </section>
+
+        <aside class="cart-panel" id="cartPanel" aria-labelledby="cart-title">
+          <div class="cart-heading">
+            <div>
+              <p class="eyebrow">YOUR HAPPY BAG</p>
+              <h2 id="cart-title">Pesananmu <span class="cart-count" id="cartCount">0</span></h2>
+            </div>
+            <button class="icon-button cart-close" id="closeCart" type="button" aria-label="Tutup keranjang">×</button>
+          </div>
+
+          <label class="table-field" for="tableName">
+            <span>Nama / nomor meja</span>
+            <input id="tableName" type="text" maxlength="40" placeholder="Contoh: Meja 04">
+          </label>
+
+          <div class="cart-items" id="cartItems" aria-live="polite"></div>
+          <div class="cart-empty" id="cartEmpty">
+            <span aria-hidden="true">🛍️</span>
+            <strong>Keranjang masih kosong</strong>
+            <p>Menu enak tinggal pilih, lho!</p>
+          </div>
+
+          <label class="service-toggle">
+            <input id="serviceCharge" type="checkbox">
+            <span class="toggle-track" aria-hidden="true"></span>
+            <span>Service charge <small>5% dari subtotal</small></span>
+          </label>
+
+          <div class="bill-summary">
+            <div><span>Subtotal</span><strong id="subtotal">Rp0</strong></div>
+            <div id="serviceRow" hidden><span>Service charge (5%)</span><strong id="serviceAmount">Rp0</strong></div>
+            <div class="bill-total"><span>Total estimasi</span><strong id="total">Rp0</strong></div>
+          </div>
+
+          <button class="button button-whatsapp" id="whatsappOrder" type="button">
+            <span aria-hidden="true">↗</span> Kirim via WhatsApp
+          </button>
+          <button class="button button-outline" id="showSummary" type="button">Tampilkan ringkasan</button>
+          <p class="cart-footnote">Pesanan dikirim langsung ke kasir. Pembayaran dilakukan di cafe.</p>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="./">
+        <span class="brand-mark" aria-hidden="true">cs</span>
+        <span class="brand-copy"><strong>cafe sore</strong><span>good food, good mood</span></span>
+      </a>
+      <p>Made for your little happy moments <span aria-hidden="true">♡</span></p>
+      <span class="footer-hours">OPEN DAILY · 10.00—22.00</span>
+    </footer>
+
+    <button class="cart-backdrop" id="cartBackdrop" type="button" aria-label="Tutup keranjang"></button>
+    <button class="mobile-cart-button" id="openCart" type="button" aria-controls="cartPanel" aria-expanded="false">
+      <span class="mobile-cart-icon" aria-hidden="true">🛍</span>
+      <span>Lihat keranjang</span>
+      <strong id="mobileCartTotal">Rp0</strong>
+      <span class="mobile-cart-badge" id="mobileCartCount">0</span>
+    </button>
+
+    <dialog class="summary-dialog" id="summaryDialog" aria-labelledby="summaryTitle">
+      <div class="summary-topline"><span class="brand-mark" aria-hidden="true">cs</span><button class="icon-button" id="closeSummary" type="button" aria-label="Tutup ringkasan">×</button></div>
+      <p class="eyebrow">ORDER SUMMARY</p>
+      <h2 id="summaryTitle">Siap, ini pesananmu!</h2>
+      <div class="summary-content" id="summaryContent"></div>
+      <p class="summary-hint">Tunjukkan layar ini ke kasir untuk melanjutkan pesanan.</p>
+      <button class="button button-outline summary-dismiss" id="dismissSummary" type="button">Kembali ke menu</button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

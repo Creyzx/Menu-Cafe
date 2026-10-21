@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 460">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#eeeaff"/>
+      <stop offset="1" stop-color="#ffd8ca"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="460" fill="url(#bg)"/>
+  <circle cx="350" cy="230" r="145" fill="#fff" opacity=".7"/>
+  <circle cx="350" cy="230" r="112" fill="#ffca9e"/>
+  <path d="M255 243c0-53 42-95 95-95s95 42 95 95-42 74-95 74-95-21-95-74Z" fill="#f5a06d"/>
+  <path d="M280 216c11-31 38-51 70-51 36 0 61 20 73 51-19 21-43 33-73 33-28 0-52-12-70-33Z" fill="#fff4d5"/>
+  <circle cx="318" cy="211" r="9" fill="#ff7868"/>
+  <circle cx="355" cy="190" r="9" fill="#b99aea"/>
+  <circle cx="386" cy="220" r="9" fill="#75c9a3"/>
+  <text x="350" y="400" fill="#68569c" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">a little something yummy</text>
+</svg>
